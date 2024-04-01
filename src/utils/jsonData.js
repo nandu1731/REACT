@@ -1,71 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const Header = () => {
-  return (
-    <div className="header">
-      <div className="logo">
-        <img src="https://www.logodesign.net/logo/smoking-burger-with-lettuce-3624ld.png" />
-      </div>
-      <div className="links">
-        <ul>
-          <li>Home</li>
-          <li>About US</li>
-          <li>Cart</li>
-        </ul>
-      </div>
-    </div>
-  );
-};
-
-const RestaurantCard = (props) => {
-  const { info } = props.resInfo;
-  return (
-    <div className="card">
-      <img
-        src={`https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/${info?.cloudinaryImageId}`}
-      />
-      <div className="card-body">
-        <h4>{info?.name}</h4>
-        <h5>{info?.cuisines.join(", ")}</h5>
-        <div className="card-pair">
-          <p>{info?.avgRatingString} stars </p>
-          <p>{info?.sla?.slaString}</p>
-        </div>
-        <div className="card-pair">
-          <p>{info?.sla?.lastMileTravelString}</p>
-          <p>{info?.areaName}</p>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-const Body = () => {
-  return (
-    <div className="body">
-      <div className="search">Search</div>
-      <div className="container">
-        {restaurantsInfo?.map((restaurant) => (
-          <RestaurantCard key={restaurant?.id} resInfo={restaurant} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
-const AppComponent = () => {
-  return (
-    <div className="root">
-      <Header />
-      <Body />
-    </div>
-  );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppComponent />);
-
 const restaurantsInfo = [
   {
     info: {
@@ -467,3 +399,5 @@ const restaurantsInfo = [
     widgetId: "collectionV5RestaurantListWidget_SimRestoRelevance_food_seo",
   },
 ];
+
+export default restaurantsInfo;
