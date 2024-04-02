@@ -21,7 +21,8 @@
     margin:0px 16px;
 }
 .search{
-    padding: 16px;
+    /* padding: 16px; */
+    margin: 16px;
 }
 .card{
     width: 200px;
@@ -57,4 +58,14 @@
     height: 370px;
     margin:16px;
     background-color: #f0f0f0;
+}
+.inputVal{
+    margin: 8px;
+    width:200px;
+    padding: 8px;
+}
+.searchBtn{
+    margin: 8px;
+    padding: 8px;
+    cursor: pointer;
 }
