@@ -6,7 +6,8 @@ const Body = () => {
   const [restaurantData, setRestaurantData] = useState(restaurantsInfo);
 
   const filterData = () => {
-    setRestaurantData(restaurantData.filter((res) => res?.info?.avgRating > 4));
+    const filteredData = restaurantData.filter((res) => res?.avgRating >= 4);
+    setRestaurantData(filteredData);
   };
 
   return (
