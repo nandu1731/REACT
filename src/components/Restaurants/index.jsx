@@ -1,4 +1,4 @@
-import { CDN_URL } from "./../../utils/constants";
+import CDN_URL from "./../../utils/constants";
 
 const RestaurantCard = (props) => {
   const { resInfo } = props;
@@ -20,4 +20,4 @@ const RestaurantCard = (props) => {
     </div>
   );
 };
-export default RestaurantCard;
+export { RestaurantCard };
