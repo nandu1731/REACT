@@ -121,32 +121,40 @@ const Body = () => {
 
   return (
     <div className="body">
-      <div className="search">
-        <input
-          type="text"
-          className="inputVal"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e?.target?.value);
-          }}
-        />
-        <button type="button" className="searchBtn" onClick={getSearchResult}>
-          Search
-        </button>
-      </div>
-      <button type="button" style={{ margin: "16px" }} onClick={filterData}>
-        Rating 4.0+
-      </button>
-      <div className="container">
-        {searchResponse?.length != 0
-          ? searchResponse?.map((restaurant, index) => (
-              <RestaurantCard
-                key={restaurant?.info?.id || index}
-                resInfo={restaurant?.info}
-              />
-            ))
-          : showEmptyMsg && <h1>No results found</h1>}
-      </div>
+      {searchResponse?.length> 0 ?(
+        <>
+         <div className="search">
+         <input
+           type="text"
+           className="inputVal"
+           value={searchText}
+           onChange={(e) => {
+             setSearchText(e?.target?.value);
+           }}
+         />
+         <button type="button" className="searchBtn" onClick={getSearchResult}>
+           Search
+         </button>
+       </div>
+       <button type="button" style={{ margin: "16px" }} onClick={filterData}>
+         Rating 4.0+
+       </button>
+       <div className="container">
+         {searchResponse?.length != 0
+           ? searchResponse?.map((restaurant, index) => (
+               <RestaurantCard
+                 key={restaurant?.info?.id || index}
+                 resInfo={restaurant?.info}
+               />
+             ))
+           : showEmptyMsg && <h1>No results found</h1>}
+       </div>
+       </>
+      ):(
+        <p>No Restaurants found</p>
+      )
+      }
+     
     </div>
   );
 };
