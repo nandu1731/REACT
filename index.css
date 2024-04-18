@@ -69,3 +69,27 @@
     padding: 8px;
     cursor: pointer;
 }
+.resMenu img{
+    width: 150px;
+    height: 150px;
+}
+.loading{
+    border-radius: 16px; background-color: #fff;height: calc(100% - 16px);
+}
+
+.mb16{
+    margin-bottom: 16px !important;
+}
+.bg-empty {
+    color: transparent; background: linear-gradient( to right, #cccccc 18%, #cccccc57 28%, #cccccc 75% );
+    animation-name: placeHolderShimmer; animation-duration: 15s; animation-fill-mode: forwards; animation-timing-function: linear; animation-iteration-count: infinite; opacity: 0.5;
+}
+.loadingCards{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card{
+    padding: 16px;
+    margin: 8px;
+}
+  
