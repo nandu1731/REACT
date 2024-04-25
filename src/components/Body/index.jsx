@@ -20,8 +20,9 @@ const Body = () => {
 
   useEffect(() => {
     getData();
+    // console.log('useEffect')
   }, []);
-
+  // console.log('body render')
   // useEffect(() => {
   //   fetchMoreData();
   // }, [page]);
@@ -167,8 +168,8 @@ const Body = () => {
   ) : (
     <>
       <div className="loadingCards">
-        {[1,2,3,4,5,6,7,8,9,10].map((item)=>(
-          <div className="col-3">
+        {[1,2,3,4,5,6,7,8,9,10].map((item,index)=>(
+          <div className="col-3"key={index}>
           <div
             className={`bg-empty loading mb16 card`}
             style={{ width: "180px", height: "300px" }}
