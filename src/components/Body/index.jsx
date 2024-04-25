@@ -13,7 +13,7 @@ const Body = () => {
     const filteredData = restaurantData.filter(
       (res) => res?.info?.avgRating >= 4
     );
-    setRestaurantData(filteredData);
+    setSearchResponse(filteredData);
   };
 
   useEffect(() => {
@@ -21,7 +21,6 @@ const Body = () => {
     // console.log('useEffect')
   }, []);
   // console.log('body render')
- 
 
   const getData = async () => {
     setIsLoading(true);
@@ -54,13 +53,14 @@ const Body = () => {
   };
 
   return !isLoading ? (
-    <div className="body">
+    <div className="m-3 p-3">
       {searchResponse?.length > 0 ? (
         <>
-          <div className="search">
+          <div className="flex flex-wrap items-center justify-between m-3 p-1">
+            <div>
             <input
               type="text"
-              className="inputVal"
+              className="px-5 py-3 m-2 border-2 border-gray-900 rounded-md"
               value={searchText}
               onChange={(e) => {
                 setSearchText(e?.target?.value);
@@ -68,16 +68,23 @@ const Body = () => {
             />
             <button
               type="button"
-              className="searchBtn"
+              className="px-5 m-2 py-2 font-medium bg-slate-200 rounded-md cursor-pointer"
               onClick={getSearchResult}
             >
               Search
             </button>
+            </div>
+            
+            <button
+              type="button"
+              className="px-5 m-1 py-2 font-medium bg-slate-200 rounded-md cursor-pointer"
+              onClick={filterData}
+            >
+              Rating 4.0+
+            </button>
           </div>
-          <button type="button" style={{ margin: "16px" }} onClick={filterData}>
-            Rating 4.0+
-          </button>
-          <div className="container">
+
+          <div className="flex flex-wrap m-3 ">
             {searchResponse?.length != 0
               ? searchResponse?.map((restaurant, index) => (
                   <Link
@@ -97,15 +104,15 @@ const Body = () => {
   ) : (
     <>
       <div className="loadingCards">
-        {[1,2,3,4,5,6,7,8,9,10].map((item,index)=>(
-          <div className="col-3"key={index}>
-          <div
-            className={`bg-empty loading mb16 card`}
-            style={{ width: "180px", height: "300px" }}
-          >
-            loading
+        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map((item, index) => (
+          <div className="col-3" key={index}>
+            <div
+              className={`bg-empty loading mb16 card`}
+              style={{ width: "180px", height: "300px" }}
+            >
+              loading
+            </div>
           </div>
-        </div>
         ))}
       </div>
     </>

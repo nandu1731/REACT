@@ -12,7 +12,7 @@ const RestaurantInfo = () => {
     resInfo?.data?.cards?.[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards?.[2]
       ?.card?.card?.itemCards || [];
   return (
-    <div className="resMenu">
+    <div className="w-60">
       <h1>{info?.name}</h1>
       <img src={`${CDN_URL}${info?.cloudinaryImageId}`} />
       <div>
