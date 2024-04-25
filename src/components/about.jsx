@@ -16,7 +16,7 @@ class About extends React.Component {
       <div>
         <h1>About page</h1>
         <UserClass name="Nandini" age="21" />
-        <UserClass name='sindhu' age='19'></UserClass>
+        {/* <UserClass name='sindhu' age='19'></UserClass> */}
       </div>
     );
   }
