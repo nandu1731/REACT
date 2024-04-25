@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { LOGO_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../../hooks/useOnlineStatus";
 
 const Header = () => {
   const [loginStatus, setLoginStatus] = useState("Login");
-
+  const online = useOnlineStatus();
 
   const handleLoginStatus = () => {
     if (loginStatus === "Login") {
@@ -22,6 +23,7 @@ const Header = () => {
 
       <div className="links">
         <ul>
+          <li>{online ? "online" : "offline"}</li>
           <li>
             <Link to="/">Home</Link>
           </li>
