@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { RestaurantCard } from "../Restaurants";
+import RestaurantCard, { NearestRestaurantCard } from "../Restaurants";
 import { useEffect, useState } from "react";
 
 const Body = () => {
@@ -16,6 +16,8 @@ const Body = () => {
     setSearchResponse(filteredData);
   };
 
+  const WithLabelResCard = NearestRestaurantCard(RestaurantCard);
+
   useEffect(() => {
     getData();
     // console.log('useEffect')
@@ -25,7 +27,7 @@ const Body = () => {
   const getData = async () => {
     setIsLoading(true);
     const response = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.37240&lng=78.43780&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.4322123&lng=78.3963095&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const data = await response.json();
     setRestaurantData(
@@ -58,23 +60,23 @@ const Body = () => {
         <>
           <div className="flex flex-wrap items-center justify-between m-3 p-1">
             <div>
-            <input
-              type="text"
-              className="px-5 py-3 m-2 border-2 border-gray-900 rounded-md"
-              value={searchText}
-              onChange={(e) => {
-                setSearchText(e?.target?.value);
-              }}
-            />
-            <button
-              type="button"
-              className="px-5 m-2 py-2 font-medium bg-slate-200 rounded-md cursor-pointer"
-              onClick={getSearchResult}
-            >
-              Search
-            </button>
+              <input
+                type="text"
+                className="px-5 py-3 m-2 border-2 border-gray-900 rounded-md"
+                value={searchText}
+                onChange={(e) => {
+                  setSearchText(e?.target?.value);
+                }}
+              />
+              <button
+                type="button"
+                className="px-5 m-2 py-2 font-medium bg-slate-200 rounded-md cursor-pointer"
+                onClick={getSearchResult}
+              >
+                Search
+              </button>
             </div>
-            
+
             <button
               type="button"
               className="px-5 m-1 py-2 font-medium bg-slate-200 rounded-md cursor-pointer"
@@ -91,7 +93,11 @@ const Body = () => {
                     to={`/restaurant/${restaurant?.info?.id}`}
                     key={restaurant?.info?.id || index}
                   >
-                    <RestaurantCard resInfo={restaurant?.info} />
+                    {Number(restaurant?.info?.sla?.deliveryTime) < 30 ? (
+                      <WithLabelResCard resInfo={restaurant?.info} />
+                    ) : (
+                      <RestaurantCard resInfo={restaurant?.info} />
+                    )}
                   </Link>
                 ))
               : showEmptyMsg && <h1>No results found</h1>}

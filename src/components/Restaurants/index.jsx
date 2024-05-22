@@ -4,7 +4,7 @@ const RestaurantCard = (props) => {
   const { resInfo } = props;
 
   return (
-    <div className="w-50 h-80 p-3 bg-slate-100 hover:bg-slate-200 rounded-lg m-3">
+    <div className="w-50 h-80 p-3 bg-slate-100 hover:bg-slate-200 rounded-lg m-3 relative ">
       <img
         className="w-48 h-40 rounded-lg"
         src={`${CDN_URL}${resInfo?.cloudinaryImageId}`}
@@ -21,4 +21,15 @@ const RestaurantCard = (props) => {
     </div>
   );
 };
-export { RestaurantCard };
+export default RestaurantCard;
+
+export const NearestRestaurantCard = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <>
+        <label className="absolute bg-black text-white">Nearest</label>
+        <RestaurantCard {...props}/>
+      </>
+    );
+  };
+};
