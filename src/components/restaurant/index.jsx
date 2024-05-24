@@ -7,7 +7,8 @@ import RestaurantCategory from "../resCategory.jsx";
 const RestaurantInfo = () => {
   const { resId } = useParams();
   const resInfo = useRestaurantMenu(resId);
-  const [currentOpenedCard, setCurrentOpenedCard] = useState('');
+  const [currentOpenedCard, setCurrentOpenedCard] = useState("");
+  const [show, setShow] = useState(false);
 
   const info = resInfo?.data?.cards?.[2]?.card?.card?.info || {};
 
@@ -18,10 +19,14 @@ const RestaurantInfo = () => {
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
-  const handleOpen=(e,title)=>{
+  const handleOpen = (e, title) => {
     setCurrentOpenedCard(title);
-    debugger;
-  }
+    showCard();
+  };
+
+  const showCard = () => {
+    setShow(!show);
+  };
 
   return (
     <div className="w-8/12 m-auto">
@@ -38,14 +43,14 @@ const RestaurantInfo = () => {
           return (
             <RestaurantCategory
               title={title}
+              key={title}
               itemCards={itemCards.slice(0, 3)}
-              showCards={title==currentOpenedCard?true:false}
               handleOpen={handleOpen}
+              showCards={title === currentOpenedCard ? show : false}
             />
           );
         })}
       </div>
-
     </div>
   );
 };

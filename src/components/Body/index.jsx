@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import RestaurantCard, { NearestRestaurantCard } from "../Restaurants";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserContext from "../../utils/UserContext";
 
 const Body = () => {
   const [restaurantData, setRestaurantData] = useState([]);
@@ -54,6 +55,8 @@ const Body = () => {
     }
   };
 
+  const { name, setUserName } = useContext(UserContext);
+
   return !isLoading ? (
     <div className="m-3 p-3">
       {searchResponse?.length > 0 ? (
@@ -84,6 +87,11 @@ const Body = () => {
             >
               Rating 4.0+
             </button>
+            <input
+              className="p-2"
+              value={name}
+              onChange={(e) => setUserName(e?.target?.value)}
+            />
           </div>
 
           <div className="flex flex-wrap m-3 ">

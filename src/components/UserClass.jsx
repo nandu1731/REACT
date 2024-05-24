@@ -35,6 +35,7 @@ class UserClass extends React.Component {
         <p>this is user class component</p>
         <button
           type="button"
+          className="p-2 bg-black text-white"
           onClick={() => this.setState({ count: this.state.count + 1 })}
         >
           Click to update
