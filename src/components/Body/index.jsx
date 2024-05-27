@@ -32,11 +32,11 @@ const Body = () => {
     );
     const data = await response.json();
     setRestaurantData(
-      data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+      data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setSearchResponse(
-      data?.data?.cards?.[1]?.card?.card?.gridElements?.infoWithStyle
+      data?.data?.cards?.[4]?.card?.card?.gridElements?.infoWithStyle
         ?.restaurants
     );
     setIsLoading(false);

@@ -3,6 +3,8 @@ import { LOGO_URL } from "../../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../../hooks/useOnlineStatus";
 import UserContext from "../../utils/UserContext";
+import { useSelector } from "react-redux";
+import cartSlice from "../../slices/cartSlice";
 
 const Header = () => {
   const [loginStatus, setLoginStatus] = useState("Login");
@@ -17,6 +19,8 @@ const Header = () => {
       setLoginStatus("Login");
     }
   };
+
+  const cart = useSelector((store) => store.cart.items);
 
   return (
     <div className="flex justify-between flex-wrap items-center bg-green-200 p-1 md:bg-lime-200">
@@ -36,7 +40,7 @@ const Header = () => {
             <Link to="/about">About us</Link>
           </li>
           <li className="px-5 text-lg font-medium">
-            <Link to="/cart">Cart</Link>
+            <Link to="/cart">Cart- ({cart?.length} items)</Link>
           </li>
           <li className="px-5 text-lg font-medium">
             <p>{name}</p>

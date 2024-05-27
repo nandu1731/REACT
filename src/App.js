@@ -8,12 +8,15 @@ import Cart from "./components/cart";
 import Error from "./components/404";
 import RestaurantInfo from "./components/restaurant";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import AppStore from "./utils/AppStore";
 
 const About = lazy(() => import("./components/about"));
 
 const AppComponent = () => {
   const [userName, setUserName] = useState("Nandu");
   return (
+    <Provider store={AppStore}>
     <UserContext.Provider value={{ name: "ammu", setUserName }}>
       <div className="root">
         <Header />
@@ -22,6 +25,7 @@ const AppComponent = () => {
         </UserContext.Provider>
       </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
