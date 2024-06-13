@@ -4,6 +4,7 @@ import Header from "./components/header";
 import Body from "./components/Body";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 // import About from "./components/about";
+import Contact from "./components/Contact";
 import Cart from "./components/cart";
 import Error from "./components/404";
 import RestaurantInfo from "./components/restaurant";
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+      {
+        path: "/contact",
+        element: <Contact />,
       },
       {
         path: "/restaurant/:resId",

@@ -45,6 +45,9 @@ const Header = () => {
           <li className="px-5 text-lg font-medium">
             <p>{name}</p>
           </li>
+          <li className="px-5 text-lg font-medium">
+            <Link to='/contact'>Contact</Link>
+          </li>
           <li
             className="px-5 py-2 text-lg font-medium bg-slate-100 rounded-md cursor-pointer"
             onClick={handleLoginStatus}
