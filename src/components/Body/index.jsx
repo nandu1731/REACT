@@ -73,6 +73,7 @@ const Body = () => {
               />
               <button
                 type="button"
+                data-testid='search'
                 className="px-5 m-2 py-2 font-medium bg-slate-200 rounded-md cursor-pointer"
                 onClick={getSearchResult}
               >

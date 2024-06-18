@@ -24,3 +24,36 @@ it("should load login button in header", () => {
 
   expect(logout).toBeInTheDocument();
 });
+
+it("should load login with cart", () => {
+  render(
+    <BrowserRouter>
+      {" "}
+      {/* rendering this beacuse of Link tag */}
+      <Provider store={AppStore}>
+        {" "}
+        {/* rendering because we are using react redux store*/}
+        <Header />
+      </Provider>
+    </BrowserRouter>
+  );
+  const login = screen.getByText(/Cart/);
+  expect(login).toBeInTheDocument();
+});
+
+// it("should load login with 0 cart items", () => {
+//   render(
+//     <BrowserRouter>
+//       {" "}
+//       {/* rendering this beacuse of Link tag */}
+//       <Provider store={AppStore}>
+//         {" "}
+//         {/* rendering because we are using react redux store*/}
+//         <Header />
+//       </Provider>
+//     </BrowserRouter>
+//   );
+//   const emptyCart = screen.getByText("(Cart -0 items)");
+//   expect(emptyCart).toBeInTheDocument();
+// });
+
